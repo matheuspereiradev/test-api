@@ -5,6 +5,7 @@ import { ClientsController } from './clients.controller';
 import { ClientsRepository } from './clients.repository';
 import { CreateNewClient } from './services/create-new.service';
 import { ListAllClients } from './services/list-all.service';
+import { UpdateClient } from './services/update-client.service';
 
 @Module({
     imports: [DatabaseModule],
@@ -12,6 +13,7 @@ import { ListAllClients } from './services/list-all.service';
     providers: [
         ListAllClients,
         CreateNewClient,
+        UpdateClient,
         {
             provide: ClientsRepository,
             useClass: TypeOrmClientsRepository

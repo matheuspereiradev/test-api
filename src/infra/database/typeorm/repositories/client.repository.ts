@@ -18,6 +18,22 @@ export class TypeOrmClientsRepository implements ClientsRepository {
 
         await this.clientsRepository.save(data)
     }
+    
+    async save(client: Client): Promise<void> {
+        const data = TypeormClientMapper.toTypeOrm(client)
+
+        await this.clientsRepository.save(data)
+    }
+
+    async findById(id: number): Promise<Client> {
+        const client = await this.clientsRepository.findOne({
+            where: {
+                id
+            }
+        })
+
+        return TypeormClientMapper.toDomain(client)
+    }
 
     async findAll(): Promise<Client[]> {
         const clients = await this.clientsRepository.find()

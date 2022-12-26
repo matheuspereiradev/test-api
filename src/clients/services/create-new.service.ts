@@ -8,7 +8,7 @@ export interface ICreateNewClientRequest {
 }
 
 export interface ICreateNewClientResponse {
-    client: any
+    client: Client
 }
 
 @Injectable()
